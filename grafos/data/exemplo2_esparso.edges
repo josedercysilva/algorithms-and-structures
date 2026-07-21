@@ -1,0 +1,4 @@
+# Grafo com saltos de ID
+# Source    Target    Weight
+0           2         15.0
+5           6         33.3
