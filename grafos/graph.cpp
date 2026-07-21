@@ -1,6 +1,7 @@
 #include "graph.hpp"
 #include <utility>
 #include <iostream>
+#include <algorithm>
 
 Graph::Graph() = default;
 
@@ -36,8 +37,34 @@ int Graph::addEdge(int sourceId, int targetId, double weight)
         }
     }
 
-    outEdges[sourceId].emplace_back(targetId, weight);
-    inEdges[targetId].emplace_back(sourceId, weight);
+
+    // Retorna true or false
+    auto compareByWeight = [](const Edge& val, const Edge& element) {
+        return val.weight < element.weight;
+    };
+
+
+    // outEdges
+    Edge newOutEdge(targetId, weight);
+
+    auto beginOutRange = outEdges[sourceId].begin();
+    auto endOutRange   = outEdges[sourceId].end();
+
+    auto outIt = std::upper_bound(beginOutRange, endOutRange, newOutEdge, compareByWeight);
+
+    outEdges[sourceId].insert(outIt, newOutEdge);
+
+
+    //inEdges
+    Edge newInEdge(sourceId, weight);
+
+    auto beginInRange = inEdges[targetId].begin();
+    auto endInRange   = inEdges[targetId].end();
+
+    auto inIt = std::upper_bound(beginInRange, endInRange, newInEdge, compareByWeight);
+
+    inEdges[targetId].insert(inIt, newInEdge);
+
 
     return 1;
 }
