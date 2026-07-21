@@ -1,3 +1,7 @@
+// TODO: Implementar Tradução de IDs, std::unordered_map, na leitura do arquivo.
+// Motivo: Prevenir alocação massiva de memória causada por IDs esparsos no dataset de origem, garantindo que os vetores do Grafo continuem densos e contíguos na memória RAM.
+
+
 #include "graph.hpp"
 #include <utility>
 #include <iostream>
@@ -82,6 +86,10 @@ const std::vector<Edge>& Graph::getInEdges(int vertexId) const
 const Vertex& Graph::getVertexData(int vertexId) const
 {
     return vertices[vertexId];
+}
+
+int Graph::getVertexCount() const {
+    return vertices.size();
 }
 
 

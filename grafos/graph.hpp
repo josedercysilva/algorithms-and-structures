@@ -21,6 +21,8 @@ public:
     const std::vector<Edge>& getInEdges(int vertexId) const;
 
     const Vertex& getVertexData(int vertexId) const;
+
+    int getVertexCount() const;
 };
 
 #endif
