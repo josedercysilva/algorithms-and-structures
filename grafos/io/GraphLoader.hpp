@@ -2,7 +2,7 @@
 #define GRAPH_LOADER_HPP
 
 #include <string>
-#include "graph.hpp"
+#include "../core/graph.hpp"
 
 
 enum class GraphLoadError {
