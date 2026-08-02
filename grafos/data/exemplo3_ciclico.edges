@@ -1,6 +1,6 @@
 # Grafo com ciclos e rotas duplas
 # Source    Target    Weight
-1           21        60.0
-21          55         40.0
-55          1      10.0
-1         2        99.9
+1           4          60.0
+1           2          40.0
+55          1          10.0
+2           4          1.00
